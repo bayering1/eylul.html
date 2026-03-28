@@ -1,0 +1,106 @@
+ <!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Beni Ne Kadar Tanıyorsun?</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Beni Ne Kadar Tanıyorsun? 😎</h1>
+
+<form id="quiz">
+
+    <p>1. kaç yaşındayım?</p>
+    <input type="radio" name="q1" value="a"> 3<br>
+    <input type="radio" name="q1" value="b"> 5<br>
+    <input type="radio" name="q1" value="c"> 4<br>
+
+    <p>2. favori rengim?</p>
+    <input type="radio" name="q2" value="a"> mavi<br>
+    <input type="radio" name="q2" value="b"> mor<br>
+    <input type="radio" name="q2" value="c"> pembe<br>
+
+    <p>3. favori yemeğim?</p>
+    <input type="radio" name="q3" value="a"> döner<br>
+    <input type="radio" name="q3" value="b"> pizza<br>
+    <input type="radio" name="q3" value="c"> hamburger<br>
+
+    <p>4. favori tatlım?</p>
+    <input type="radio" name="q4" value="a"> donut<br>
+    <input type="radio" name="q4" value="b"> dondurma<br>
+    <input type="radio" name="q4" value="c"> tulumba<br>
+
+    <p>5. favori aktivitem?</p>
+    <input type="radio" name="q5" value="a"> yemek yemek<br>
+    <input type="radio" name="q5" value="b"> bale<br>
+    <input type="radio" name="q5" value="c"> koşmak<br>
+
+    <br><br>
+    <button type="button" onclick="sonucuHesapla()">Sonucu Göster</button>
+
+</form>
+
+<h2 id="sonuc"></h2>
+
+</div>
+
+<script>
+function sonucuHesapla() {
+    let puan = 0;
+
+    let q1 = document.querySelector('input[name="q1"]:checked');
+    let q2 = document.querySelector('input[name="q2"]:checked');
+    let q3 = document.querySelector('input[name="q3"]:checked');
+    let q4 = document.querySelector('input[name="q4"]:checked');
+    let q5 = document.querySelector('input[name="q5"]:checked');
+
+    if (!q1 || !q2 || !q3 || !q4 || !q5) {
+        alert("Tüm soruları cevapla!");
+        return;
+    }
+
+    // DOĞRU CEVAPLAR (kendine göre değiştir)
+    if (q1.value === "c") puan++;
+    if (q2.value === "b") puan++;
+    if (q3.value === "b") puan++;
+    if (q4.value === "a") puan++;
+    if (q5.value === "b") puan++;
+
+    document.getElementById("sonuc").innerText = "Sonuç: " + puan + "/5";
+}
+</script>
+
+</body>
+</html>
